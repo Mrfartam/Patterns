@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Important\\IT\\TSU\\ООАП 2\\FabricMethod\\FabricMethod.csproj": {}
+  },
+  "projects": {
+    "D:\\Important\\IT\\TSU\\ООАП 2\\FabricMethod\\FabricMethod.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Important\\IT\\TSU\\ООАП 2\\FabricMethod\\FabricMethod.csproj",
+        "projectName": "FabricMethod",
+        "projectPath": "D:\\Important\\IT\\TSU\\ООАП 2\\FabricMethod\\FabricMethod.csproj",
+        "packagesPath": "C:\\Users\\parfe\\.nuget\\packages\\",
+        "outputPath": "D:\\Important\\IT\\TSU\\ООАП 2\\FabricMethod\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\parfe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "Microsoft.Toolkit.Uwp.Notifications": {
+              "target": "Package",
+              "version": "[7.1.3, )"
+            },
+            "Telegram.Bot": {
+              "target": "Package",
+              "version": "[22.4.3, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
