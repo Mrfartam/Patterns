@@ -13,6 +13,7 @@ namespace FabricMethod
     public partial class Form1 : Form
     {
         private string savedText;
+        private List<NotificationCreator> notificationCreators = new List<NotificationCreator>();
         public Form1()
         {
             InitializeComponent();
@@ -34,23 +35,38 @@ namespace FabricMethod
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PushNotificationCreator creator = new PushNotificationCreator();
-            PushNotification notif = creator.GenerateNotification(savedText);
-            notif.SendNotification();
+            if (!notificationCreators.Any() || !notificationCreators.Any(nc => nc is PushNotificationCreator))
+                notificationCreators.Add(new PushNotificationCreator());
+            foreach(var nc in notificationCreators)
+                if(nc is PushNotificationCreator pnc)
+                {
+                    Notification notif = pnc.GenerateNotification(savedText);
+                    notif.SendNotification();
+                }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            TelegramNotificationCreator creator = new TelegramNotificationCreator();
-            TelegramNotification notif = creator.GenerateNotification(savedText);
-            notif.SendNotification();
+            if (!notificationCreators.Any() || !notificationCreators.Any(nc => nc is TelegramNotificationCreator))
+                notificationCreators.Add(new TelegramNotificationCreator());
+            foreach (var nc in notificationCreators)
+                if (nc is TelegramNotificationCreator pnc)
+                {
+                    Notification notif = pnc.GenerateNotification(savedText);
+                    notif.SendNotification();
+                }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            EmailNotificationCreator creator = new EmailNotificationCreator();
-            EmailNotification notif = creator.GenerateNotification(savedText);
-            notif.SendNotification();
+            if (!notificationCreators.Any() || !notificationCreators.Any(nc => nc is EmailNotificationCreator))
+                notificationCreators.Add(new EmailNotificationCreator());
+            foreach (var nc in notificationCreators)
+                if (nc is EmailNotificationCreator pnc)
+                {
+                    Notification notif = pnc.GenerateNotification(savedText);
+                    notif.SendNotification();
+                }
         }
     }
 }

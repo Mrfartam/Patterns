@@ -24,43 +24,85 @@ namespace FabricMethod
             System.Windows.Forms.Application.Run(new Form1());
         }
     }
-
-    class PushNotificationCreator
+    abstract class NotificationCreator
     {
-        public PushNotification GenerateNotification(string txt)
+        public Notification notification;
+        public NotificationCreator()
         {
-            PushNotification notification = new PushNotification(txt);
-            return notification;
+            notification = null;
         }
+        public abstract Notification GenerateNotification(string txt);
     }
 
-    class TelegramNotificationCreator
-    {
-        public TelegramNotification GenerateNotification(string txt)
-        {
-            TelegramNotification notification = new TelegramNotification(txt);
-            return notification;
-        }
-    }
-
-    class EmailNotificationCreator
-    {
-        public EmailNotification GenerateNotification(string txt)
-        {
-            EmailNotification notification = new EmailNotification(txt);
-            return notification;
-        }
-    }
-
-    class PushNotification
+    abstract class Notification
     {
         public string text;
-
-        public PushNotification(string txt)
+        public Notification(string txt)
         {
             text = txt;
         }
-        public void SendNotification()
+        public abstract void SendNotification();
+    }
+    class PushNotificationCreator: NotificationCreator
+    {
+        public override Notification GenerateNotification(string txt)
+        {
+            if(notification == null)
+                notification = new PushNotification(txt);
+            else
+                notification.text = txt;
+            return notification;
+        }
+    }
+
+    class TelegramNotificationCreator: NotificationCreator
+    {
+        private string nickname;
+        private string bot_token;
+
+        public TelegramNotificationCreator(string nick = "1280753537",
+            string bot_tok = "7746664717:AAEOqZgxkvMPZv_7Xl5Btgkhv5chebRsr2g")
+        {
+            this.nickname = nick;
+            this.bot_token = bot_tok;
+        }
+
+        public override Notification GenerateNotification(string txt)
+        {
+            if (notification == null)
+                notification = new TelegramNotification(txt, nickname, bot_token);
+            else
+                notification.text = txt;
+            return notification;
+        }
+    }
+
+    class EmailNotificationCreator: NotificationCreator
+    {
+        private string sender_email;
+        private string receiver_email;
+
+        public EmailNotificationCreator(string sender = "notification.ooad@gmail.com",
+            string receiver = "parfenovivan55@gmail.com")
+        {
+            this.sender_email = sender;
+            this.receiver_email = receiver;
+        }
+
+        public override Notification GenerateNotification(string txt)
+        {
+            if (notification == null)
+                notification = new EmailNotification(txt, sender_email, receiver_email);
+            else
+                notification.text = txt;
+            return notification;
+        }
+    }
+
+    class PushNotification: Notification
+    {
+        public PushNotification(string txt) : base(txt) { }
+        public override void SendNotification()
         {
             new ToastContentBuilder().
                 AddText("Новое push-уведомление!").
@@ -70,19 +112,17 @@ namespace FabricMethod
         }
     }
 
-    class TelegramNotification
+    class TelegramNotification: Notification
     {
-        public string text;
-        public string nickname;
-        public TelegramBotClient bot;
+        private string nickname;
+        private TelegramBotClient bot;
 
-        public TelegramNotification(string txt)
+        public TelegramNotification(string txt, string nick, string bot_token) : base(txt)
         {
-            text = txt;
-            nickname = "1280753537";
-            bot = new TelegramBotClient("7746664717:AAEOqZgxkvMPZv_7Xl5Btgkhv5chebRsr2g");
+            nickname = nick;
+            bot = new TelegramBotClient(bot_token);
         }
-        public async void SendNotification()
+        public override async void SendNotification()
         {
             try
             {
@@ -95,19 +135,17 @@ namespace FabricMethod
         }
     }
 
-    class EmailNotification
+    class EmailNotification: Notification
     {
-        public string text;
-        public string sender_email;
-        public string receiver_email;
+        private string sender_email;
+        private string receiver_email;
 
-        public EmailNotification(string txt)
+        public EmailNotification(string txt, string send_email, string receive_email): base(txt)
         {
-            text = txt;
-            sender_email = "notification.ooad@gmail.com";
-            receiver_email = "parfenovivan55@gmail.com";
+            sender_email = send_email;
+            receiver_email = receive_email;
         }
-        public async void SendNotification()
+        public override async void SendNotification()
         {
             string smtpServer = "smtp.gmail.com";
             int smtpPort = 465;
