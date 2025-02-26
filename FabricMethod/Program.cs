@@ -7,7 +7,6 @@ using MailKit.Net.Smtp;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telegram.Bot;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace FabricMethod
 {
