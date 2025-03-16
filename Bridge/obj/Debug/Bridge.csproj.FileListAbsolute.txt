@@ -1,0 +1,16 @@
+D:\Important\IT\TSU\ООАП 2\Bridge\bin\Debug\Bridge.exe.config
+D:\Important\IT\TSU\ООАП 2\Bridge\bin\Debug\Bridge.exe
+D:\Important\IT\TSU\ООАП 2\Bridge\bin\Debug\Bridge.pdb
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.csproj.AssemblyReference.cache
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.Properties.Resources.resources
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.csproj.GenerateResource.cache
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.csproj.CoreCompileInputs.cache
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.csproj.Up2Date
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.exe
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.pdb
+D:\Important\IT\TSU\ООАП 2\Bridge\bin\Debug\BouncyCastle.Cryptography.dll
+D:\Important\IT\TSU\ООАП 2\Bridge\bin\Debug\itextsharp.dll
+D:\Important\IT\TSU\ООАП 2\Bridge\bin\Debug\itextsharp.xmlworker.dll
+D:\Important\IT\TSU\ООАП 2\Bridge\bin\Debug\RtfPipe.dll
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.MainForm.resources
+D:\Important\IT\TSU\ООАП 2\Bridge\obj\Debug\Bridge.SaveForm.resources
