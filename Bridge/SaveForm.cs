@@ -33,6 +33,7 @@ namespace Bridge
         private void button_pdf_Click(object sender, EventArgs e)
         {
             documentManager.imp = new PDFDocumentSaver(richTextBox, documentManager.image);
+            richTextBox.Enabled = true;
             documentManager.SaveDocument();
             Visible = false;
         }
@@ -42,7 +43,6 @@ namespace Bridge
             documentManager.imp = new PNGDocumentSaver(richTextBox, documentManager.image);
             richTextBox.Enabled = true;
             documentManager.SaveDocument();
-            richTextBox.Enabled = false;
             Visible = false;
         }
     }

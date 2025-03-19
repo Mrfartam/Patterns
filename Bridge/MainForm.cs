@@ -34,11 +34,8 @@ namespace Bridge
 
             int button_save_width = button_save.Width;
             int button_save_height = button_save.Height;
-            if (button_add_image.Enabled)
-                button_save.Location = new Point((form_width - button_save_width) / 2, 20 + label_height + text_box_height + button_add_img_height);
-            else
-                button_save.Location = new Point((form_width - button_save_width) / 2, 15 + label_height + text_box_height);
-            this.ClientSize = new Size(600, Math.Max(button_save.Location.Y + button_save.Height + 5, 600));
+            button_save.Location = new Point((form_width - button_save_width) / 2, 20 + label_height + text_box_height + button_add_img_height);
+            ClientSize = new Size(600, Math.Max(button_save.Location.Y + button_save.Height + 5, 600));
         }
         private void AutoSize_RichTextBox(object sender, ContentsResizedEventArgs e)
         {
@@ -54,8 +51,6 @@ namespace Bridge
             documentManager = new DocumentManager(richTextBox);
             if (documentManager.AddImage())
             {
-                button_add_image.Enabled = false;
-                button_add_image.Visible = false;
                 richTextBox.Enabled = false;
                 label1.Text = "Сохраните документ";
             }
@@ -64,6 +59,7 @@ namespace Bridge
         }
         private void button_save_Click(object sender, EventArgs e)
         {
+            if (documentManager == null) documentManager = new DocumentManager(richTextBox);
             SaveForm new_form = new SaveForm(richTextBox, documentManager);
             new_form.Visible = false;
             new_form.ShowDialog();

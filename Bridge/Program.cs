@@ -146,7 +146,7 @@ namespace Bridge
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 Bitmap bitmap = new Bitmap(richTextBox.Width, richTextBox.Height);
-
+                
                 richTextBox.DrawToBitmap(bitmap, new Rectangle(0, 0, richTextBox.Width, richTextBox.Height));
 
                 string filePath = saveFileDialog.FileName;
