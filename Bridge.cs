@@ -8,6 +8,7 @@ public class DocumentManager
     public DocumentManager(RichTextBox richTextBox)
     {
         imp = null;
+        image = null;
         this.richTextBox = richTextBox;
     }
     public bool AddImage()
@@ -38,19 +39,17 @@ public class DocumentManager
 public abstract class DocumentSaver
 {
     protected Image image;
-    public DocumentSaver(Image image)
+    protected RichTextBox richTextBox;
+    public DocumentSaver(RichTextBox richTextBox, Image image)
     {
         this.image = image;
+        this.richTextBox = richTextBox;
     }
     public abstract void SaveDocument();
 }
 public class PDFDocumentSaver: DocumentSaver
 {
-    private RichTextBox richTextBox;
-    public PDFDocumentSaver(RichTextBox richTextBox, Image image): base(image)
-    {
-        this.richTextBox = richTextBox;
-    }
+    public PDFDocumentSaver(RichTextBox richTextBox, Image image) : base(richTextBox, image) { }
     public override void SaveDocument()
     {
         SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -116,11 +115,7 @@ public class PDFDocumentSaver: DocumentSaver
 }
 public class PNGDocumentSaver: DocumentSaver
 {
-    private RichTextBox richTextBox;
-    public PNGDocumentSaver(RichTextBox richTextBox, Image image) : base(image)
-    {
-        this.richTextBox = richTextBox;
-    }
+    public PNGDocumentSaver(RichTextBox richTextBox, Image image) : base(richTextBox, image) { }
     public override void SaveDocument()
     {
         SaveFileDialog saveFileDialog = new SaveFileDialog();
